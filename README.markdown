@@ -1,15 +1,30 @@
 # Melopy (melo-pee)
-### A python library for playing with sound. 
-### by Jordan Scales (http://jordanscales.com)
-### on Github: http://github.com/prezjordan/Melopy
+
+#### A python library for playing with sound. 
+#### by Jordan Scales (http://jordanscales.com) and friends
+#### on Github: http://github.com/prezjordan/Melopy
 
 For an example: check out canon.py 
 
     $ python examples/canon.py
 
+To install:
+
+    $ git clone git://github.com/prezjordan/Melopy
+    $ cd Melopy
+    $ sudo python setup.py install
+
+To run the tests: (we've got some errors to work out)
+
+    $ python setup.py test
+
+or:
+
+    $ pip install -r requirements.txt
+    $ nosetests
+
 
 ## Library methods
-
     >>> # Returns the frequency of the note (key) keys from A0
     >>> melopy.frequency_from_key(49)
     440
@@ -34,15 +49,20 @@ For an example: check out canon.py
     >>> melopy.generate_minor_scale('C4')
     ['C4','D4','E4','F4','G4','A4','A#4']
 
-
     >>> # Calls iterate with the starting note and the pattern [4, 3]
     >>> melopy.generate_major_triad('A4')
     ['A4', 'C#5', 'E5']
 
-
     >>> # Calls iterate with the starting note and the pattern [3, 4]
     >>> melopy.generate_minor_triad('C5')
     ['C5', 'D#5', 'G5']
+
+All methods that return lists support choosing return types. The default return type is a list. example:
+
+    >>> generate_minor_scale("A4","tuple")
+    ('A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5')
+    >>> generate_minor_scale("A4","dict")
+    {0: 'A4', 1: 'B4', 2: 'C5', 3: 'D5', 4: 'E5', 5: 'F5', 6: 'G5'}
 
 
 
@@ -83,3 +103,10 @@ For an example: check out canon.py
         # Renders the wave form to a wav file
         render(self)
 
+## TODO
+* Implement custom wave-types
+* Create project page
+* Add music reader
+* Add types of scales?
+* Fix scales to work properly (`d731ad5`)
+* Write to wav file bitwise? Rather than having an overhead
