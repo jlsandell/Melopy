@@ -208,6 +208,3 @@ class Melopy:
 		# Now that all the work has been done, dump it to disk.
 		with open(filename, 'wb') as save:
 			save.write(file_obj.read())
-
-		file_obj.close()
-		del file_obj
